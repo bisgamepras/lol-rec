@@ -1,8 +1,10 @@
+import { supabase } from "./supabase-config.js";
 
-const socket = io();
+const socket = io({ autoConnect: false });
 
 const $ = (id) => document.getElementById(id);
-const entry = $("entry");
+const authView = $("auth-view");
+const appView = $("app-view");
 const roomView = $("room-view");
 const remoteVideo = $("remote-screen");
 
