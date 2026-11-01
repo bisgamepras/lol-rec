@@ -1,17 +1,303 @@
 
-/* LOL REC - NOVOS RECURSOS */
+/* DISCORD 2 - LOL REC */
+
+:root {
+  --bg: #1e1f22;
+  --sidebar: #2b2d31;
+  --panel: #313338;
+  --panel-dark: #232428;
+  --line: #3f4147;
+  --text: #f2f3f5;
+  --muted: #949ba4;
+  --accent: #5865f2;
+  --cyan: #57d9ff;
+  --green: #23a559;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s;
+}
+
+button:hover {
+  filter: brightness(1.15);
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  background: var(--panel-dark);
+  color: white;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  outline: none;
+  margin: 7px 0 16px;
+}
+
+input:focus {
+  border-color: var(--accent);
+}
+
+label {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* LOGIN */
+
+#auth-view {
+  width: min(430px, calc(100% - 30px));
+  margin: 8vh auto;
+  padding: 35px;
+  background: var(--panel);
+  border-radius: 12px;
+  box-shadow: 0 15px 50px #0007;
+  text-align: center;
+}
+
+#auth-view h1 {
+  font-size: 29px;
+  margin-bottom: 10px;
+}
+
+#auth-view h2 {
+  font-size: 21px;
+  margin-top: 28px;
+}
+
+#auth-view p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+#auth-view button {
+  margin: 5px;
+}
+
+#login-form,
+#signup-form {
+  text-align: left;
+  margin-top: 25px;
+}
+
+#login-form button,
+#signup-form button {
+  width: 100%;
+}
+
+#auth-status {
+  color: var(--cyan);
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+/* PAINEL PRINCIPAL */
+
+#app-view,
+#room-view {
+  width: min(1200px, calc(100% - 30px));
+  margin: 25px auto;
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 10px 35px #0004;
+}
+
+#app-view h2,
+#room-view h2 {
+  font-size: 22px;
+}
+
+#profile-name {
+  color: var(--cyan);
+  font-weight: bold;
+}
+
+#logout-btn {
+  background: #da373c;
+}
+
+/* SERVIDORES */
+
+#server-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  margin: 22px 0;
+}
+
+.server-card {
+  background: var(--sidebar);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px;
+  transition: .2s;
+}
+
+.server-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.server-card h3 {
+  margin-top: 0;
+  font-size: 17px;
+}
+
+.server-card p {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.server-card button {
+  width: 100%;
+}
+
+/* SALA */
+
+#room-view {
+  padding: 0;
+  overflow: hidden;
+}
+
+.room-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  background: var(--sidebar);
+  border-bottom: 1px solid var(--line);
+}
+
+#room-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#remote-screen {
+  display: block;
+  width: 100%;
+  min-height: 250px;
+  max-height: 600px;
+  background: #111;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+}
+
+.controls button {
+  flex: 0 1 auto;
+}
+
+#share-btn {
+  background: var(--green);
+}
+
+#stop-btn,
+#stop-mic-btn {
+  background: #da373c;
+}
+
+#leave-btn {
+  background: #da373c;
+}
+
+/* PESSOAS */
+
+#people-list {
+  background: var(--sidebar);
+  border-radius: 8px;
+  padding: 15px;
+  min-height: 55px;
+  color: var(--muted);
+}
+
+#people-count {
+  color: var(--cyan);
+  font-weight: bold;
+}
+
+/* CHAT */
+
+#messages {
+  background: var(--panel-dark);
+  border-radius: 8px;
+  padding: 18px;
+  min-height: 180px;
+  max-height: 400px;
+  overflow-y: auto;
+  line-height: 1.5;
+}
+
+#chat-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+#chat-input {
+  flex: 1;
+  margin: 0;
+}
+
+#image-input {
+  max-width: 180px;
+}
+
+.chat-image {
+  display: block;
+  max-width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-top: 7px;
+  border: 1px solid var(--line);
+}
+
+/* PERFIL */
 
 .avatar-img {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid var(--cyan);
-  flex-shrink: 0;
+  border: 2px solid var(--accent);
 }
 
 .profile-editor {
-  padding: 0 15px 15px;
+  padding: 15px;
   border-top: 1px solid var(--line);
 }
 
@@ -29,53 +315,69 @@
 .image-upload {
   display: block;
   text-align: center;
-  background: #252f45;
-  border: 1px solid #35415a;
-  color: #dce4f7;
-  border-radius: 10px;
+  background: var(--sidebar);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 8px;
   padding: 10px;
   cursor: pointer;
-  font-size: 12px;
   margin-top: 10px;
-  transition: .18s;
 }
 
-.image-upload:hover {
-  background: #34446a;
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.chat-image {
-  display: block;
-  max-width: 100%;
-  max-height: 220px;
-  object-fit: contain;
+::-webkit-scrollbar-thumb {
+  background: #45474e;
   border-radius: 10px;
-  margin-top: 7px;
-  border: 1px solid var(--line);
 }
 
-.controls button {
-  flex: 0 1 auto;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-#audio-placeholder {
-  display: none;
+/* NOTIFICAÇÕES */
+
+#toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--panel);
+  border: 1px solid var(--accent);
+  padding: 14px 20px;
+  border-radius: 8px;
+  z-index: 100;
+  box-shadow: 0 5px 20px #0008;
 }
 
-@media(max-width: 500px) {
+/* CELULAR */
+
+@media (max-width: 600px) {
+  #auth-view,
+  #app-view,
+  #room-view {
+    width: calc(100% - 16px);
+    margin: 8px auto;
+    padding: 15px;
+  }
+
+  #chat-form {
+    flex-wrap: wrap;
+  }
+
+  #chat-input {
+    min-width: 100%;
+  }
+
   .controls button {
     flex: 1 1 100%;
   }
 
   .room-head {
-    gap: 10px;
     flex-wrap: wrap;
   }
-
-  .chat-image {
-    max-height: 180px;
-  }
-}
-.hidden {
-  display: none !important;
 }
