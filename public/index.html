@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -18,34 +19,62 @@
       <div class="eyebrow">SEU ESPAÇO, SUA GALERA</div>
       <h1>Assista, compartilhe<br><span>e converse.</span></h1>
       <p class="muted">Crie uma sala ou entre na sala de um amigo. Compartilhe sua tela e conversem em tempo real.</p>
+
       <form id="join-form">
         <label for="name">Seu nome</label>
         <input id="name" maxlength="24" placeholder="Como quer aparecer?" required>
+
+        <label for="avatar-file">Sua foto de perfil</label>
+        <input id="avatar-file" type="file" accept="image/png,image/jpeg,image/webp">
+
         <label for="room">Código da sala</label>
         <input id="room" maxlength="24" placeholder="Ex.: GALERA123" required>
+
         <button class="primary wide" type="submit">Entrar na sala <span>→</span></button>
       </form>
+
       <p class="tiny">Dica: combinem um código com seus amigos. Quem usar o mesmo código entra na mesma sala.</p>
     </section>
 
     <section id="room-view" class="room-view hidden">
       <div class="room-head">
-        <div><div class="eyebrow">VOCÊ ESTÁ NA SALA</div><h2 id="room-title">—</h2></div>
+        <div>
+          <div class="eyebrow">VOCÊ ESTÁ NA SALA</div>
+          <h2 id="room-title">—</h2>
+        </div>
         <button id="copy-invite" class="secondary">Copiar convite</button>
       </div>
+
       <div class="workspace">
         <section class="stage-card">
-          <div class="stage-top"><span><i class="dot"></i> Ao vivo</span><span id="screen-label">Nenhuma tela compartilhada</span></div>
+          <div class="stage-top">
+            <span><i class="dot"></i> Ao vivo</span>
+            <span id="screen-label">Nenhuma tela compartilhada</span>
+          </div>
+
           <div id="screen-stage" class="screen-stage">
-            <div class="empty-screen"><div class="screen-icon">▣</div><h3>A tela da galera aparece aqui</h3><p>Quando alguém compartilhar, você verá nesta área.</p></div>
+            <div class="empty-screen">
+              <div class="screen-icon">▣</div>
+              <h3>A tela da galera aparece aqui</h3>
+              <p>Quando alguém compartilhar, você verá nesta área.</p>
+            </div>
             <video id="remote-screen" autoplay playsinline></video>
           </div>
+
           <div class="controls">
             <button id="share-btn" class="primary">▣ Compartilhar tela</button>
             <button id="stop-btn" class="secondary hidden">Parar compartilhamento</button>
+            <button id="mic-btn" class="secondary">🎙️ Ligar microfone</button>
+            <button id="stop-mic-btn" class="secondary hidden">🔇 Desligar microfone</button>
             <button id="leave-btn" class="danger">Sair da sala</button>
           </div>
-          <p class="tiny">O navegador pedirá autorização antes de compartilhar. Use HTTPS (ou localhost).</p>
+
+          <p class="tiny">O navegador pedirá autorização para usar seu microfone e compartilhar a tela.</p>
+
+          <div class="profile-editor">
+            <label for="change-avatar">Alterar foto de perfil</label>
+            <input id="change-avatar" type="file" accept="image/png,image/jpeg,image/webp">
+          </div>
         </section>
 
         <aside class="side-card">
@@ -53,20 +82,32 @@
             <div class="side-title">PESSOAS <span id="people-count" class="count">0</span></div>
             <ul id="people-list" class="people-list"></ul>
           </div>
+
           <div class="chat-section">
             <div class="side-title">BATE-PAPO <span class="live-label">AO VIVO</span></div>
-            <div id="messages" class="messages"><div class="chat-hint">As mensagens da sala aparecem aqui.</div></div>
+
+            <div id="messages" class="messages">
+              <div class="chat-hint">As mensagens da sala aparecem aqui.</div>
+            </div>
+
             <form id="chat-form" class="chat-form">
               <input id="chat-input" maxlength="500" placeholder="Escreva uma mensagem..." autocomplete="off">
               <button class="send-btn" aria-label="Enviar mensagem">➤</button>
             </form>
+
+            <label for="image-input" class="image-upload">📷 Enviar imagem</label>
+            <input id="image-input" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+            <p class="tiny">Envie apenas imagens que você tem autorização para compartilhar.</p>
           </div>
         </aside>
       </div>
     </section>
+
     <footer>lol rec <span>•</span> feito para reunir amigos</footer>
   </main>
+
   <div id="toast" class="toast hidden"></div>
+
   <script src="/socket.io/socket.io.js"></script>
   <script src="/app.js"></script>
 </body>
